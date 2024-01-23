@@ -15,7 +15,6 @@ permalink: /staff
 - You can also request office hour appointments
 
 ## Max Weidmer (TA)
-- Office: HR 411/413
 - Office Hour Zoom: [https://usfca.zoom.us/j/86453869287](https://usfca.zoom.us/j/86453869287)
 - Office Hours: Mon 3:00pm-5:00pm, Wed 3:00pm-4:00pm, Fri 3:00pm-5:00pm
 - Max's office hours are on Zoom only.
