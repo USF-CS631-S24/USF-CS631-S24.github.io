@@ -192,6 +192,12 @@ ssh beagle
 
 This will take you to one of the five BeagleV machines we have running in CS: beagle1, beagle2, beagle3, beagle4, and beagle5. Note that you have a shared home directory on stargate and all the beagle machines, so you ssh setup should work without changes.
 
+To get your GitHub ssh key to propogate from stargate to the beagle machines you need to add the following to ```~/.ssh/config```:
+
+```
+Host *
+    ForwardAgent yes
+```
 
 ## Running the RISC-V vm on your computer
 
