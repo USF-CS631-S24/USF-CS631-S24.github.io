@@ -137,7 +137,7 @@ I will explain which computer and which directory you should be using. A common 
 - Add your public key to the ```authorized_keys``` file.
 
   ```text
-  cat id_ed25519_cs631_2024s >> authorized_keys
+  cat id_ed25519_cs631_2024s.pub >> authorized_keys
   ```
 
   - This will create ```authorized_keys``` if it doesn't exist or it will add your new key to the end of ```authorized_keys``` if it does exist.
