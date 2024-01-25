@@ -20,7 +20,7 @@ You can also work in a emulated RISC-V environment using Qemu (https://www.qemu.
 
 We will be working extensively from the shell (commmand line) in this class. See the [Shell Usage Guide](/guides/shell-usage) for an overview of working from the shell and common commands I frequently use.
 
-To access the command line in macOS you can use the Terminal application or iTerm (a popular third party terminal program that is very powerful, https://iterm2.com/).
+To access the command line in macOS you can use the Terminal application or iTerm (a popular third party terminal program that is very powerful, [https://iterm2.com/](https://iterm2.com/)).
 
 Linux also has a Terminal application for accessing the command line.
 
@@ -34,7 +34,7 @@ You can also get command line access with Gitbash, which comes with Git for Wind
 
 We will be using ssh to access our remote RISC-V machines as well as our local RISC-V vm. From outside the CS network, you can access CS machines from stargate. You will need to install the USF VPN to access stargate outside the USF campus network ([USF VPN](https://myusf.usfca.edu/vpn)). To get to stargate type:
 
-(Note, all the commands below should be entered at the shell prompt)
+Note, all the commands below should be entered at the shell prompt, usually ```$``` (bash or sh), or ```%```.
 
 ```text
 ssh <your_username>@stargate.cs.usfca.edu
@@ -253,8 +253,8 @@ sudo apt install qemu qemu-system-misc
 Next, you need to download the Ubuntu RISC-V image I've created:
 
 ```text
-mkdir cs315
-cd cs315
+mkdir cs631
+cd cs631
 curl https://www.cs.usfca.edu/~benson/cs315/files/ubuntu-22.04-riscv.zip --output ubuntu-22.04-riscv.zip
 unzip ubuntu-22.04-riscv.zip
 ```
@@ -300,7 +300,7 @@ Host riscv
   Port 4444
   AddKeysToAgent yes
   ForwardAgent yes
-  IdentityFile ~/.ssh/id_ed25519_cs315_2023f
+  IdentityFile ~/.ssh/id_ed25519_cs631_2024s
   User benson
 ```
 
@@ -316,7 +316,7 @@ Then exit back to your computer and use scp to copy your public key into the vm 
 
 ```text
 cd .ssh
-scp -P 4444 .ssh/id_ed25519_cs315_2023f.pub <your_username>@localhost:.ssh
+scp -P 4444 .ssh/id_ed25519_cs631_2024s.pub <your_username>@localhost:.ssh
 ```
 
 Go back into the vm and update ```authorized_keys``` and check the file permissions in .ssh.
@@ -343,7 +343,7 @@ On your computer, you can add the following to ```~/.ssh/config```:
 Host github.com
   AddKeysToAgent yes
   ForwardAgent yes
-  IdentityFile ~/.ssh/id_ed25519_cs315_2023f
+  IdentityFile ~/.ssh/id_ed25519_cs631_2024s
   User <your_username>
 ```
 
