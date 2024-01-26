@@ -34,7 +34,7 @@ RISC-V assembly language has a set of instructions that operate on a set of 32 r
 
 Instructions typically take the form `opcode dst, src1, src2`, where `opcode` is the operation to perform, and `dst`, `src1`, and `src2` are the destination and source registers.
 
-For example, to add the values in `a1` and `a2` and store the result in `a3`, you would write:
+For example, to add the values in `a1` and `a2` and store the result in `a0`, you would write:
 
 ```text
 add a0, a1, a2
