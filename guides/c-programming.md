@@ -10,7 +10,7 @@ permalink: /guides/c-programming
 
 [Stanford Essential C](http://cslibrary.stanford.edu/101/)
 
-[Modern C Site](https://gustedt.gitlabpages.inria.fr/modern-c/#orgc1a82d5)
+[Modern C Site](https://gustedt.gitlabpages.inria.fr/modern-c/)
 
 [Modern C PDF](https://inria.hal.science/hal-02383654)
 
