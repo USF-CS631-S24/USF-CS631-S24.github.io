@@ -8,7 +8,7 @@ permalink: /assignments/lab01
 
 # Scanning for ntlang
 
-## Due Tue Jan 30th by 11:59pm in your Lab01 GitHub repo
+## Due Wed Jan 31th by 11:59pm in your Lab01 GitHub repo
 
 ## Links
 
