@@ -20,7 +20,7 @@ You can also work in a emulated RISC-V environment using Qemu (https://www.qemu.
 
 We will be working extensively from the shell (commmand line) in this class. See the [Shell Usage Guide](/guides/shell-usage) for an overview of working from the shell and common commands I frequently use.
 
-To access the command line in macOS you can use the Terminal application or iTerm (a popular third party terminal program that is very powerful, https://iterm2.com/).
+To access the command line in macOS you can use the Terminal application or iTerm (a popular third party terminal program that is very powerful, [https://iterm2.com/](https://iterm2.com/)).
 
 Linux also has a Terminal application for accessing the command line.
 
@@ -34,7 +34,7 @@ You can also get command line access with Gitbash, which comes with Git for Wind
 
 We will be using ssh to access our remote RISC-V machines as well as our local RISC-V vm. From outside the CS network, you can access CS machines from stargate. You will need to install the USF VPN to access stargate outside the USF campus network ([USF VPN](https://myusf.usfca.edu/vpn)). To get to stargate type:
 
-(Note, all the commands below should be entered at the shell prompt)
+Note, all the commands below should be entered at the shell prompt, usually ```$``` (bash or sh), or ```%```.
 
 ```text
 ssh <your_username>@stargate.cs.usfca.edu
@@ -137,7 +137,7 @@ I will explain which computer and which directory you should be using. A common 
 - Add your public key to the ```authorized_keys``` file.
 
   ```text
-  cat id_ed25519_cs631_2024s >> authorized_keys
+  cat id_ed25519_cs631_2024s.pub >> authorized_keys
   ```
 
   - This will create ```authorized_keys``` if it doesn't exist or it will add your new key to the end of ```authorized_keys``` if it does exist.
@@ -184,137 +184,24 @@ I will explain which computer and which directory you should be using. A common 
 
 ## Accessing the BeagleV machines
 
-If everything is set up properly you should also be able to ssh directly into euryale without a password:
+You can access the BeagleV machine from stargate:
 
-**ON YOUR COMPUTER**
-
-```text
-ssh stargate
-ssh euryale
+```
+ssh beagle
 ```
 
-You may have to say "yes" to connect the first time, but after than you should not have to type your password or passphrase to get into euryale from stargate.
+This will take you to one of the five BeagleV machines we have running in CS: beagle1, beagle2, beagle3, beagle4, and beagle5. Note that you have a shared home directory on stargate and all the beagle machines, so you ssh setup should work without changes.
 
-Next we want configure ssh on your computer so that you can ssh directly to euryale. So, exit back to your computer.
+To get your GitHub ssh key to propogate from stargate to the beagle machines you need to add the following to ```~/.ssh/config```:
 
-**ON YOUR COMPUTER**
-
-Edit your ~/.ssh/config file:
-
-```text
-cd
-nano .ssh/config
 ```
-
-Add the following text:
-
-```text
-Host euryale
-  HostName euryale
-  AddKeysToAgent yes
-  ForwardAgent yes
-  IdentityFile ~/.ssh/id_ed25519_cs315_2023f
-  User <your_username>
-  ProxyCommand ssh -W %h:%p stargate
-```
-
-Remember to replace ```<your_username>``` with your USF/CS username.
-
-This will allow you to type:
-
-```text
-ssh euryale
-```
-
-On your computer you should now be able to  connect directly to euryale without going to stargate first.
-
-## Accessing the Ubuntu RISC-V Virtual Machine on euryale
-
-Now that you can get into euryale, we can finally get to the RISC-V vm:
-
-**On euryale**
-
-```text
-ssh -p 4444 <your_username>@localhost
-```
-
-You will be asked for a password, which is your USF ID number (CWID). There will be a delay from the time you type ENTER/RETURN after your password and when you start to see login text, so be patient.
-
-You should change your password (to say the same password you use for stargate):
-
-```text
-passwd
-```
-
-Also, by default, your vm home directory does not have a ```.ssh``` directory, so we need to create it with proper permissions:
-
-```text
-cd
-mkdir .ssh
-chmod 700 .ssh
-```
-
-Now that you can get to the RISC-V vm, let's configure your laptop so you can ssh directly to the vm without having to ssh to euryale first. Exit back to euryale:
-
-```text
-exit
-```
-
-Now we are going to copy your public key from euryale to the vm:
-
-```text
-scp -P 4444 .ssh/id_ed25519_cs315_2023f.pub <your_username>@localhost:.ssh
-```
-
-Replace ```<your_username>``` with your USF/CS username.
-
-Next, ssh back into the vm:
-
-```text
-ssh -p 4444 <your_username>@localhost
-```
-
-Add your public key to your ```~/.ssh/authorized_keys```:
-
-```text
-cd .ssh
-cat id_ed25519_cs315_2023f.pub >> authorized_keys
-```
-
-After you do this, you can exit back to euryale and you should be able to ssh back to the vm without typing your password:
-
-```text
-ssh -p 4444 <your_username>@localhost
-```
-
-Now, we are going to go back to your computer and configure ssh so that you can connect directly to the vm without going to euryale first. So exit back to your computer.
-
-```text
-cd ~/.ssh
-```
-
-Add the following text to ```~/.ssh/config```
-
-```text
-Host euryalevm
-  HostName localhost
-  Port 4444
-  AddKeysToAgent yes
-  ForwardAgent yes
-  IdentityFile ~/.ssh/id_ed25519_cs315_2023f
-  User <your_username>
-  ProxyCommand ssh -W %h:%p euryale
-```
-
-Once you do this, you should be able to ssh directly to the vm like this without typing a password:
-
-```text
-ssh euryalevm
+Host *
+    ForwardAgent yes
 ```
 
 ## Running the RISC-V vm on your computer
 
-In addition to getting access to the remote RISC-V machine you also need to set up a local RISC-V vm. This way you have two options for developing code in the class and if for some reason of of the virtual machines does not work, you will have acces to the other one.
+In addition to getting access to the remote RISC-V BeagleV machines you also need to set up a local RISC-V vm. This way you have two options for developing code in the class.
 
 On your laptop, you need to install Qemu.
 
@@ -372,8 +259,8 @@ sudo apt install qemu qemu-system-misc
 Next, you need to download the Ubuntu RISC-V image I've created:
 
 ```text
-mkdir cs315
-cd cs315
+mkdir cs631
+cd cs631
 curl https://www.cs.usfca.edu/~benson/cs315/files/ubuntu-22.04-riscv.zip --output ubuntu-22.04-riscv.zip
 unzip ubuntu-22.04-riscv.zip
 ```
@@ -419,7 +306,7 @@ Host riscv
   Port 4444
   AddKeysToAgent yes
   ForwardAgent yes
-  IdentityFile ~/.ssh/id_ed25519_cs315_2023f
+  IdentityFile ~/.ssh/id_ed25519_cs631_2024s
   User benson
 ```
 
@@ -435,7 +322,7 @@ Then exit back to your computer and use scp to copy your public key into the vm 
 
 ```text
 cd .ssh
-scp -P 4444 .ssh/id_ed25519_cs315_2023f.pub <your_username>@localhost:.ssh
+scp -P 4444 .ssh/id_ed25519_cs631_2024s.pub <your_username>@localhost:.ssh
 ```
 
 Go back into the vm and update ```authorized_keys``` and check the file permissions in .ssh.
@@ -462,7 +349,7 @@ On your computer, you can add the following to ```~/.ssh/config```:
 Host github.com
   AddKeysToAgent yes
   ForwardAgent yes
-  IdentityFile ~/.ssh/id_ed25519_cs315_2023f
+  IdentityFile ~/.ssh/id_ed25519_cs631_2024s
   User <your_username>
 ```
 

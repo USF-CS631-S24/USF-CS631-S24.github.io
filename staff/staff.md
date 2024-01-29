@@ -21,6 +21,5 @@ permalink: /staff
 
 ## Quinn Brockmyre (TA)
 - Office: HR 411/413
-- Office Hour Zoom: [TBD](TBD)
+- Office Hour Zoom: [https://usfca.zoom.us/j/88944649047](https://usfca.zoom.us/j/88944649047)
 - Office Hours: Mon 12:00pm-2:00pm, Wed 1:00pm-2:00pm, Fri 12:00pm-2:00pm
-- Quinn's office hours are on Zoom only.
