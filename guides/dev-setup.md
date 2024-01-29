@@ -10,7 +10,11 @@ permalink: /guides/dev-setup
 
 ## Overview
 
-In this class we will be learning the RISC-V instruction set architecture. In order to do so we will work on emulated RISC-V hardware provided by Qemu (https://www.qemu.org/). You will have two ways to access Linux running on a RISC-V virtual machine: you can access a virtual machine running on ```euryale.cs.usfca.edu``` and you can run the RISC-V virtual machine locally using Qemu. This guide will help you set up access to both the remote vm and a local vm.
+In this class we will be learning the RISC-V instruction set architecture. In order to do so we will work on both real and emulated RISC-V environments. For running on a real RISC-V machine, the CS Department has 5 BeagleV-Ahead boards:
+
+[https://www.beagleboard.org/boards/beaglev-ahead](https://www.beagleboard.org/boards/beaglev-ahead)
+
+You can also work in a emulated RISC-V environment using Qemu (https://www.qemu.org/). You will have two ways access RISC-V Ubuntu Linux: you can ssh into the CS BeagleV machines or you can run the RISC-V virtual machine locally using Qemu. This guide will help you set up access to both the remote BeagleV machines and a local RISC-V vm.
 
 ## Command Line
 
@@ -28,7 +32,7 @@ You can also get command line access with Gitbash, which comes with Git for Wind
 
 ## ssh to stargate
 
-We will be using ssh to access our remote RISC-V vm as well as our local RISC-V vm. From outside the CS network, you can access CS machines from stargate (which is publically accessible). To get to stargate type:
+We will be using ssh to access our remote RISC-V machines as well as our local RISC-V vm. From outside the CS network, you can access CS machines from stargate. You will need to install the USF VPN to access stargate outside the USF campus network ([USF VPN](https://myusf.usfca.edu/vpn)). To get to stargate type:
 
 (Note, all the commands below should be entered at the shell prompt)
 
@@ -55,7 +59,7 @@ passwd
 
 ## Set up ssh keys for stargate
 
-Typing your password every time you want to get to stargate will become annoying very quickly. You can set up ssh keys so that you don't have to type your password ever single time. Also, typing passwords is not as secure as using keys. We will also setup ssh keys to access euryale.cs.usfca.edu and our Ubuntu RISC-V vm.
+Typing your password every time you want to get to stargate will become annoying very quick. You can set up ssh keys so that you don't have to type your password ever single time. Also, typing passwords is not as secure as using keys. We will also setup ssh keys to access the Ubuntu RISC-V vm.
 
 The basic idea is that we need to create a key pair that consists of a private key and a public key. We will put the public on the remote machines we want to access without typing a password.
 
@@ -75,7 +79,7 @@ I will explain which computer and which directory you should be using. A common 
 - Create an ssh keypair (**in ~/.ssh on your computer**):
 
   ```
-  ssh-keygen -t ed25519 -C "<your_username>@dons.usfca.edu" -f id_ed25519_cs315_2023f
+  ssh-keygen -t ed25519 -C "<your_username>@dons.usfca.edu" -f id_ed25519_cs631_2024s
   ```
 
   - Replace ```<your_username>``` with your USF/CS username.
@@ -97,7 +101,7 @@ I will explain which computer and which directory you should be using. A common 
     HostName stargate.cs.usfca.edu
     AddKeysToAgent yes
     ForwardAgent yes
-    IdentityFile ~/.ssh/id_ed25519_cs315_2023f
+    IdentityFile ~/.ssh/id_ed25519_cs631_2024s
     User <your_username>
   ```
 
@@ -112,7 +116,7 @@ I will explain which computer and which directory you should be using. A common 
 - Copy your public key to your ```.ssh``` directory on stargate:
 
   ```
-  scp id_ed25519_cs315_2023f.pub stargate:.ssh
+  scp id_ed25519_cs631_2024s.pub stargate:.ssh
   ```
 
 **ON stargate**
@@ -133,7 +137,7 @@ I will explain which computer and which directory you should be using. A common 
 - Add your public key to the ```authorized_keys``` file.
 
   ```text
-  cat id_ed25519_cs315_2023f >> authorized_keys
+  cat id_ed25519_cs631_2024s >> authorized_keys
   ```
 
   - This will create ```authorized_keys``` if it doesn't exist or it will add your new key to the end of ```authorized_keys``` if it does exist.
@@ -178,7 +182,7 @@ I will explain which computer and which directory you should be using. A common 
   - You will need to add text to your ```~/.bash_profile``` in Ubuntu WSL.
   - After you do this you will need to exit the Ubuntu terminal and start a new one.
 
-## Accessing euryale.cs.usfca.edu
+## Accessing the BeagleV machines
 
 If everything is set up properly you should also be able to ssh directly into euryale without a password:
 
