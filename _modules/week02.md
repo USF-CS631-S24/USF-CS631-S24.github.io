@@ -12,9 +12,9 @@ Sec02 - [Recording](https://usfca.zoom.us/rec/share/jOEIV41wH7hg5fEpX1ujXZ_MM6HL
 
 Thu, Feb 1
 : **Lec**{: .label .label-green } Parsing
-: Sec01 - [Recording](),
-          [iPad Notes](/notes/)
+: Sec01 - [Recording](https://usfca.zoom.us/rec/share/MC5vSrY-4SWLxRqfW2BxkfoTxcKYjQUqFoP3cxFnCeBE2s5YjaCwDi-moaizXRsH.TvWLGKVY07KY0OxY?startTime=1706803547000),
+          [iPad Notes](/notes/CS631-01 2024-02-01 Parsing.pdf)
 &nbsp; &nbsp;
-Sec02 - [Recording](),
-        [iPad Notes](/notes/)
+Sec02 - [Recording](https://usfca.zoom.us/rec/share/rO_mCYkwGsguyMEg55QhEUdQTAsERaQKAalVYvd_q3OSqGzT7siYWQD8tk1NlUKf.uQajJprVCg8EuEJd?startTime=1706827782000),
+        [iPad Notes](/notes/CS631-02 2024-02-01 Parsing.pdf)
 
