@@ -187,7 +187,7 @@ for (i = 0; i < 10; i++) {
 addi t0, zero, 0      # t0 = 0
 addi t1, zero, 10     # t1 = 10
 loop:
-    blt t0, t1, end   # If i >= 10, jump to end
+    bge t0, t1, end   # If i >= 10, jump to end
     add a0, a0, t0    # a0 = a0 + t0
     addi t0, t0, 1    # t0 = t0 + 1
     j loop            # Jump to start of loop
