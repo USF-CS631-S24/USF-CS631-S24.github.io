@@ -9,10 +9,9 @@ published: false
 
 # RISC-V Assembly and NTLang Code Generation
 
-## Due Mon Mar 4th by 11:59pm in your Project02 GitHub repo
+## Due Wed Mar 6th by 11:59pm in your Project02 GitHub repo
 
-## Interactive Grading on Tue Mar 5th and Wed Mar 6th. No Lectures. You will signup on a provided Google signup sheet.
-
+## Note: there will be no interactive grading for Project02. We will review your code offline.
 
 ## Links
 
@@ -123,7 +122,7 @@ Given a 32-bit unsigned integer, extract a sequence of bits and return as a sign
 
 ## NTLang Code Generation Requirements
 
-TBA
+
 
 ## Grading
 
