@@ -252,7 +252,9 @@ void compile_output_main(char *name) {
 }
 ```
 
-Next you will need to create a new module, I would call it `compile.c` based on `eval.c` that will generate stack machine code.
+Next you will need to create a new module, I would call it `compile.c` based on `eval.c` that will generate stack machine code:
+
+[https://en.wikipedia.org/wiki/Stack_machine](https://en.wikipedia.org/wiki/Stack_machine)
 
 For example, here is the function output for:
 
@@ -269,18 +271,14 @@ foo:
     lw t1, (sp)
     addi sp, sp, 4
     lw t0, (sp)
-    addi sp, sp, 4
     add t0, t0, t1
-    addi sp, sp, -4
     sw t0, (sp)
     addi sp, sp, -4
     sw a2, (sp)
     lw t1, (sp)
     addi sp, sp, 4
     lw t0, (sp)
-    addi sp, sp, 4
     mul t0, t0, t1
-    addi sp, sp, -4
     sw t0, (sp)
     lw a0, (sp)
     addi sp, sp, 4
@@ -322,7 +320,6 @@ The way the generated stack works is as follows:
     sw t0, (sp)
     ```
 
-
 ## Grading
 
 1. (100%) Automated tests.
@@ -334,3 +331,49 @@ The way the generated stack works is as follows:
   - No redundant or overly complicated code
   - A clean repo, that is no build products, extra files, etc.
 
+
+## Extra Credit Problems
+1. (1 point) Add constant folding support to NTLang compiler mode:
+
+    [https://en.wikipedia.org/wiki/Constant_folding](https://en.wikipedia.org/wiki/Constant_folding). 
+    
+    Create test cases that demonstrate your solution works.
+
+2. (3 points) Extend NTLang compiler mode to support variables and statements. Specifically add support for assignment and a print statement. For example consider the following new NTLang programs:
+ 
+```text
+$ cat p1.nt
+x = 1
+y = 2
+z = x + y
+print(z, 10, 32)
+
+$ cat p2.nt
+print((0b1 << 8) | 0xF), 16, 8)
+
+$ cat p3.nt
+x = -1
+print(x, 2, 8)
+print(x, 2, 16)
+
+$ cat p4.nt
+x = -8
+print(x, -10, 32)
+print(x, 10, 32)
+```
+
+The print statement accepts the following parameters:
+
+```text
+print(expr, base-expr, width-expr)
+```
+
+If `base-expr = -10`, then print the decimal integer as a signed value.
+
+With this extension, you need to modify ntlang to accept a pathname as the name of the ntlang program to exexecute:
+
+```text
+$ ntlang p1.nt
+```
+
+3. (3 points) Implement ntlang with compiler support in either Rust (https://www.rust-lang.org) or Zig (https://ziglang.org). These are modern systems programming languages. You can only get credit for re-implementation in one language.
