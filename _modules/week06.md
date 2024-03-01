@@ -16,5 +16,5 @@ Thu, Feb 29
 : Sec01 - [Recording](https://usfca.zoom.us/rec/share/YIOQYgHPaz8hBsQd2BftYKM54vWnjwFYLsvClhJGet18ZoiEyOr1Q8CoYf6VVgYG.-xBy-CFshfJptb6g?startTime=1709222875000),
           [iPad Notes](/notes/)
 &nbsp; &nbsp;
-Sec02 - [Recording](),
+Sec02 - [Recording](https://usfca.zoom.us/rec/share/SlfWGk-_Ag7wvXJhWJXCsBWBMMuX6Kgb7t_XoAaiAOK4SQlpfOMCtzqPyceaCJVq.h06mH_ZrvupwFmFB?startTime=1709246669000),
         [iPad Notes](/notes/)
