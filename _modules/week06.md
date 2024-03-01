@@ -14,7 +14,7 @@ Sec02 - [Recording](https://usfca.zoom.us/rec/share/XDmzRnpQo7K4Qkskitz8oD8yfcVt
 Thu, Feb 29
 : **Lec**{: .label .label-green } RISC-V Code Generation 
 : Sec01 - [Recording](https://usfca.zoom.us/rec/share/YIOQYgHPaz8hBsQd2BftYKM54vWnjwFYLsvClhJGet18ZoiEyOr1Q8CoYf6VVgYG.-xBy-CFshfJptb6g?startTime=1709222875000),
-          [iPad Notes](/notes/)
+          [iPad Notes](/notes/CS631-01 2024-02-29 RISC-V Code Generation.pdf)
 &nbsp; &nbsp;
 Sec02 - [Recording](),
-        [iPad Notes](/notes/)
+        [iPad Notes](/notes/CS631-02 2024-02-29 RISC-V Code Generation.pdf)
