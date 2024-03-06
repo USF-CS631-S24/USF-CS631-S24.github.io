@@ -208,12 +208,13 @@ Here is a C version of `codegen_main.s`:
 #include <stdio.h>
 #include <stdlib.h>
 
-void codegen_func_s(int a0, int a1, int a2, int a3,
-                    int a4, int a5, int a6, int a7);
+int codegen_func_s(int a0, int a1, int a2, int a3,
+                  int a4, int a5, int a6, int a7);
 
 int main(int argc, char *argv[]) {
     int a[8];
     int i;
+    int r;
 
     // Initialize all 8 args to 0 to be passed to codegen_func
     for (i = 0; i < 8; i++) {
@@ -221,11 +222,13 @@ int main(int argc, char *argv[]) {
     }
 
     // Populate args with up to 8 args from command line
-    for (i = 1; i < argc && i < 8; i++) {
+    for (i = 1; i < argc && i < 9; i++) {
         a[i - 1] = atoi(argv[i]);
     }
 
-    codegen_func_s(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7]);
+    r = codegen_func_s(a[0], a[1], a[2], a[3], a[4], a[5], a[6], a[7]);
+
+    printf("%d (0x%X)\n", r, r);
 
     return 0;
 }
@@ -263,6 +266,7 @@ $ ./ntlang -e "(a0 + a1) * a2" -c foo > foo.s
 ```
 
 ```text
+codegen_func_s:
 foo:
     addi sp, sp, -4
     sw a0, (sp)
