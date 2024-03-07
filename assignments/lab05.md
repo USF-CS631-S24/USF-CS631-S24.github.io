@@ -64,7 +64,7 @@ Autograder: [https://github.com/phpeterson-usf/autograder](https://github.com/ph
 
 ## Code Quality
 
-Note, like the other labs, we will not be checking your Lab05 solution for code quality, but we will be checking Project03 for code quality. You will want to make sure that you reduce redundancy in your code and also avoid using long binary literals for masks. Instead, you should implement `bits.h` and `bit.c` with the following functions:
+Note, like the other labs, we will not be checking your Lab05 solution for code quality, but we will be checking Project03 for code quality. You will want to make sure that you reduce redundancy in your code and also avoid using long binary literals for masks. Instead, you should implement `bits.h` and `bits.c` with the following functions:
 
 ```text
 $ cat bits.h
