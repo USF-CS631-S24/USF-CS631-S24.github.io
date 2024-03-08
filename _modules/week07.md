@@ -12,8 +12,8 @@ Sec02 - [Recording](https://usfca.zoom.us/rec/share/yHHKRdkWjdITxV9vauxPOapjcnf_
 
 Thu, Mar 7
 : **Lec**{: .label .label-green } RISC-V Emulation
-: Sec01 - [Recording](),
-          [iPad Notes](/notes/)
+: Sec01 - [Recording](https://usfca.zoom.us/rec/share/XIqFRoe5g5KAccl3Zo607FkV_OteUZUDFcKwwN6DvxmiC1UiVCg0cn6WKUEVlXB1.yvpyqtZVA3D4WPbR?startTime=1709827642000),
+          [iPad Notes](/notes/CS631-01 2024-03-07 RISC-V Emulation.pdf)
 &nbsp; &nbsp;
-Sec02 - [Recording](),
-        [iPad Notes](/notes/)
+Sec02 - [Recording](https://usfca.zoom.us/rec/share/rxS3i3nPW1B-BPZeHAT-8w10ZI4jxKQ1eGcLORv3bquhrcMzyksh4qpxVvuABZ9s.J-ovETw9qYnJnwtV?startTime=1709851804000),
+        [iPad Notes](/notes/CS631-02 2024-03-07 RISC-V Emulation.pdf)
