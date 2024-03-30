@@ -66,6 +66,15 @@ Your circuit must have inputs named `a`, `b`, and `cin`, and outputs named `sum`
 .
 3. Your file must be called `8-bit-ripple-carry-adder.dig`
 
+1. Using your 1-bit full adder, build an 8-bit Ripple Carry Adder.
+2. Configure the 1-bit full adder symbol so that the cin is on the top and the cout in on the bottom. You will have to increase the height and width of the 1-bit full adder symbol in Edit -> Circuit Specific Settings.
+3. Your 8-bit Adder should have two 8-bit inputs (a and b), a 1-bit carry-in (cin), an 8-bit sum output, and a 1-bit carry-out (cout) output.
+You can configure inputs and output to be multiple bit inputs.
+You can use a splitter (in the wires section) to split an n-bit wire (a bus) into multiple 1-bit wires (actually the splitter is very flexible and can do more than this). You can also use a splitter to combine multiple 1-bit wires to create a n-bit wire (bus).
+Here is a picture of what a 4-bit Ripple Carry Adder looks like. Yours does not need to be identical.
+
+
+
 ![lab06-part04](lab06-part04.png)
 
 ### Circuit 5: SR Latch
