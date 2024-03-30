@@ -4,7 +4,7 @@ title: Lab06
 nav_order: 9
 parent: Assignments
 permalink: /assignments/Lab06
-published: false
+published: true
 ---
 
 # Digital Design
@@ -48,7 +48,8 @@ Consider the C code fragment below:
 3. Since there are 4 inputs you will have 2^4 (16) rows in your truth table.
 4. Submit a working circuit that correctly produces the max value of the two inputs. You do not need to submit the truth table or Boolean algebra equation.
 5. Your circuit must have input names `a1`, `a0`, `b1`, and `b0`.
-6. Your file must be called `max2.dig`
+6. Hint: you can build your sum-of-products by only considering the rows with output of 0, then invert the resulting equation. This will minimize the number of product terms.
+7. Your file must be called `max2.dig`
  
 ### Circuit 3: 1-bit full adder
 1. In lecture, we built a 1-bit half adder (that is, an adder which does not have a carry-in) and showed the Boolean Algebra equation for a 1-bit full adder.
@@ -69,10 +70,9 @@ Your circuit must have inputs named `a`, `b`, and `cin`, and outputs named `sum`
 1. Using your 1-bit full adder, build an 8-bit Ripple Carry Adder.
 2. Configure the 1-bit full adder symbol so that the cin is on the top and the cout in on the bottom. You will have to increase the height and width of the 1-bit full adder symbol in Edit -> Circuit Specific Settings.
 3. Your 8-bit Adder should have two 8-bit inputs (a and b), a 1-bit carry-in (cin), an 8-bit sum output, and a 1-bit carry-out (cout) output.
-You can configure inputs and output to be multiple bit inputs.
-You can use a splitter (in the wires section) to split an n-bit wire (a bus) into multiple 1-bit wires (actually the splitter is very flexible and can do more than this). You can also use a splitter to combine multiple 1-bit wires to create a n-bit wire (bus).
-Here is a picture of what a 4-bit Ripple Carry Adder looks like. Yours does not need to be identical.
-
+4. You can configure inputs and output to be multiple bit inputs.
+5. You can use a splitter (in the wires section) to split an n-bit wire (a bus) into multiple 1-bit wires (actually the splitter is very flexible and can do more than this). You can also use a splitter to combine multiple 1-bit wires to create a n-bit wire (bus).
+6. Here is a picture of what a 4-bit Ripple Carry Adder looks like. Yours does not need to be identical.
 
 
 ![lab06-part04](lab06-part04.png)
@@ -88,7 +88,7 @@ S R | Q notQ
 0 0 | 1    0
 0 1 | 0    1
 0 0 | 0    1
-1 1 | UNDEFINED
+1 1 | X    X (UNDEFINED)
 ```
 
 Note the SR Latch does not have the clock as an input.
@@ -108,6 +108,23 @@ The multiplexor is an extremely useful circuit that is used to select between mu
 ![lab06-part07](lab06-part07.png)
 
 
+### 8: D Flip-flop with Enable and Clear
+
+Unlike the D Latch, the D Flip-flop only stores the input value D on the rising edge of the clock (edge triggered). Using an edge triggered latch allows us to know when the state element will be updated.
+
+![lab06-part08](lab06-part08.png)
+
+### 9: 8-bit Register with Enable and Clear
+
+We can build an N-bit register using N D Flip-flops.
+
+![lab06-part09](lab06-part09.png)
+
+### Circuit 10: 8-bit Counter
+
+We can build and 8-bit counter using an 8-bit adder and an 8-bit register.
+
+![lab06-part10](lab06-part10.png)
 
 ## Grading Rubric
 
@@ -117,5 +134,4 @@ The multiplexor is an extremely useful circuit that is used to select between mu
 
 **Circuit Quality**
 
-You need to have a clean repo, consistent naming and indentation, no dead code, no unnecessarily complex code. Any deductions can be earned back.
-
+Keep your circuits organized and symmetric. Do not use diagonal wires even though Digital allows you to do so. For the circuit labs we will not look at circuit quality, but for the projects we will. However, it is best just to build clean circuits from the beginning. You also need to have a clean repo with no extra files.
