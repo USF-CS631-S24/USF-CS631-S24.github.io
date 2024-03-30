@@ -61,18 +61,13 @@ Your circuit must have inputs named `a`, `b`, and `cin`, and outputs named `sum`
 ![lab06-part03](lab06-part03.png)
 
 ### Circuit 4: 8-bit Ripple Carry Adder
-1. You will implement an 8-bit Ripple Carry Adder with two 8-bit inputs, a 1-bit Carry In, one
- 8-bit result output, and a 1-bit Carry Out.
-2. Your circuit must have inputs named `a`, `b`, and `cin`, and outputs named `sum` and `cout`
-.
-3. Your file must be called `8-bit-ripple-carry-adder.dig`
-
 1. Using your 1-bit full adder, build an 8-bit Ripple Carry Adder.
 2. Configure the 1-bit full adder symbol so that the cin is on the top and the cout in on the bottom. You will have to increase the height and width of the 1-bit full adder symbol in Edit -> Circuit Specific Settings.
 3. Your 8-bit Adder should have two 8-bit inputs (a and b), a 1-bit carry-in (cin), an 8-bit sum output, and a 1-bit carry-out (cout) output.
-4. You can configure inputs and output to be multiple bit inputs.
+4. You can configure inputs and outputs to be multiple bit inputs.
 5. You can use a splitter (in the wires section) to split an n-bit wire (a bus) into multiple 1-bit wires (actually the splitter is very flexible and can do more than this). You can also use a splitter to combine multiple 1-bit wires to create a n-bit wire (bus).
-6. Here is a picture of what a 4-bit Ripple Carry Adder looks like. Yours does not need to be identical.
+6. Your file must be called `8-bit-ripple-carry-adder.dig`
+7. Here is a picture of what a 4-bit Ripple Carry Adder looks like. Yours does not need to be identical.
 
 
 ![lab06-part04](lab06-part04.png)
@@ -122,7 +117,7 @@ We can build an N-bit register using N D Flip-flops.
 
 ### Circuit 10: 8-bit Counter
 
-We can build and 8-bit counter using an 8-bit adder and an 8-bit register.
+We can now build and 8-bit counter using an 8-bit adder and an 8-bit register. Name your file `8-bit-counter.dig`.
 
 ![lab06-part10](lab06-part10.png)
 
