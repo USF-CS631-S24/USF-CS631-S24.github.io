@@ -9,7 +9,7 @@ published: true
 
 # RISC-V Static Analysis Circuit
 
-## Circuits due Mon Oct 30th by 11:59pm in your Project04 GitHub Repo
+## Circuits due Tue Apr 9th by 11:59pm in your Project04 GitHub Repo
 
 ## There is no interactive grading for Project04
 
