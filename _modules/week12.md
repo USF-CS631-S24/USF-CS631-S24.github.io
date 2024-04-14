@@ -12,8 +12,8 @@ Sec02 - [Recording](https://usfca.zoom.us/rec/share/I313W9wJwUP8D2PioaphRB4eXEmt
 
 Thu, Apr 11
 : **Lec**{: .label .label-green } Processor Design Control
-: Sec01 - [Recording](),
-          [iPad Notes](/notes/)
+: Sec01 - [Recording](https://usfca.zoom.us/rec/share/50JatwhqV9Bkt8AP0UxdIt7iO23Vk38EuBT-s7hQRMx-BXHlI4PKVESmkfFpHDny.V5QHZTlIJdNLJHJr?startTime=1712848276000),
+          [iPad Notes](/notes/CS631-01 2024-04-11 Processor Design Control.pdf)
 &nbsp; &nbsp;
-Sec02 - [Recording](),
-        [iPad Notes](/notes/)
+Sec02 - [Recording](https://usfca.zoom.us/rec/share/Kgk4P7SL4QXw9UHCiUFSPnHlaLM9mB1H4M2Y8ZrdwjMea-SkW5cDnEhZ1KiSkZ8z.wOP9tNV2B-PfnByM?startTime=1712848276000),
+        [iPad Notes](/notes/CS631-02 2024-04-11 Processor Design Control.pdf)
