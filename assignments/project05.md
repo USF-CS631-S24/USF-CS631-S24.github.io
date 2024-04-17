@@ -4,12 +4,12 @@ title: Project05
 nav_order: 12
 parent: Assignments
 permalink: /assignments/project05
-published: false
+published: true
 ---
 
 # RISC-V Processor Implementation
 
-## Circuits due Mon Apr 22nd by 11:59pm in your Project06 GitHub repo
+## Circuits due Mon Apr 22nd by 11:59pm in your Project05 GitHub repo
 
 ## Interactive Grading on Tue Apr 23rd and Wed Apr 24th.
 
@@ -23,7 +23,7 @@ In this project you will complete the RISC-V single cycle implementation so that
 1. Submit your modified NTLang for processor codegen
 1. Submit a PDF for your Decoder spreadsheets
 
-## Requirements
+## Processor Requirements
 
 1. You will implement a single-cycle microarchitecture for a subset of the RISC-V instruction set architecture in Digital
     1. You may use any of Digital's library of components
@@ -44,6 +44,23 @@ In this project you will complete the RISC-V single cycle implementation so that
     1. The Data Path will connect data between the various sub-circuits
     1. The Control Path will connect the Control unit to various sub-circuits and multiplexers
     1. Your top-level processor circuit should have outputs for registers A0, A1, A2, and A3.
+
+## NTLang Codegen Requirements
+
+You can put your project02 code with NTLang in your project05 repo as a subdirectory. You need to modify the NTLang code generation so that the assembly language that is generated can execute on the processor. We will discuss in class how to form assembly code to run on the processor. You can have your project02 Makefile compile the expressions to .hex files then manually load the hex files into the instruction memory of your processor. 
+
+You need to be able to compile and run the following ntlang expressions:
+
+```
+(3 * 4) + 5
+
+(a0 * a1) + a2 ; a0 = 3, a1 = 4, a2 = 5
+
+(((((~((-(2 * ((1023 + 1) / 4)) >- 2) << 8)) >> 10) ^ 0b011
+10) & 0x1E) | ~(0b10000))
+
+(((((~((-(a0 * ((a1 + a2) / a3)) >- a4) << a5)) >> a6) ^ 0b01110) & 0x1E) | ~(0b10000)) ; a0 = 1, a2 = 4, a3 = 2, a4 = 8, a5 = 10
+```
 
 ## Given
 1. We will discuss the major sub-circuits in lecture and you will have hands-on time to develop and ask questions
