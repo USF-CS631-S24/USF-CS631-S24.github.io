@@ -82,3 +82,6 @@ For interactive grading you should be able to run the autograder tests and manua
 - (10 points) Interactive grading
 - (0 points) Neatness - Circuit quality
 
+## Extra Credit
+
+TBA
