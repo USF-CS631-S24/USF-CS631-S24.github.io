@@ -45,24 +45,71 @@ In this project you will complete the RISC-V single cycle implementation so that
     1. The Control Path will connect the Control unit to various sub-circuits and multiplexers
     1. Your top-level processor circuit should have outputs for registers A0, A1, A2, and A3.
 
-## NTLang Codegen Requirements
+## NTLang Codegen Requirements (Extra Credit - 10 points)
 
 You can put your project02 code with NTLang in your project05 repo as a subdirectory. You need to modify the NTLang code generation so that the assembly language that is generated can execute on the processor. We will discuss in class how to form assembly code to run on the processor. You can have your project02 Makefile compile the expressions to .hex files then manually load the hex files into the instruction memory of your processor. 
 
 You need to be able to compile and run the following ntlang expressions:
 
+**23-cg-1**
 ```
 (3 * 4) + 5
-
-(a0 * a1) + a2 ; a0 = 3, a1 = 4, a2 = 5
-
-(((((~((-(2 * ((1023 + 1) / 4)) >- 2) << 8)) >> 10) ^ 0b011
-10) & 0x1E) | ~(0b10000))
-
-(((((~((-(a0 * ((a1 + a2) / a3)) >- a4) << a5)) >> a6) ^ 0b01110) & 0x1E) | ~(0b10000)) ; a0 = 1, a2 = 4, a3 = 2, a4 = 8, a5 = 10
 ```
 
+**24-cg-2**
+```
+(a0 * a1) + a2
+```
+
+**25-cg-3**
+```
+(((((~((-(2 * ((1023 + 1) / 4)) >- 2) << 8)) >> 10) ^ 0b011
+10) & 0x1E) | ~(0b10000))
+```
+
+**26-cg-4**
+```
+(((((~((-(a0 * ((a1 + a2) / a3)) >- a4) << a5)) >> a6) ^ 0b01110) & 0x1E) | ~(0b10000))
+```
+
+In order to support initial values for `a0` through `a7` in you processor, we are going to add a new instuction that will load an IO argument (`ioA0`, `ioA1`, etc) into a destination register. We can use `lbu` for this purpose:
+
+```text
+lbu rd, (rs1)
+```
+
+In this case `rd` will be the destination register and `rs1` will be the number of the IO argument you are loading from, with possible values of 0, 1, ..., 7. Your IO arguments should be named `ioA0`, `ioA1`, etc to be compatible with the tests. Now, your preamble should look like this:
+
+```text
+main:
+    li sp, 1024
+
+    lbu a0, (x0)
+    lbu a1, (x1)
+    lbu a2, (x2)
+    lbu a3, (x3)
+    lbu a4, (x4)
+    lbu a5, (x5)
+    lbu a6, (x6)
+    lbu a7, (x7)
+
+    jal codegen_func_s
+
+    unimp
+
+codegen_func_s:
+```
+
+I have created separate tests for the codegen portion. They are in `tests/project05-cg`. To run these tests you need to have a top-level circuit named `project05-gc` and you can run the tests like this:
+
+```text
+$ grade test -p project05-cg
+```
+
+This assumes you've added the generated codegen tests from above into your instruction memory.
+
 ## Given
+
 1. We will discuss the major sub-circuits in lecture and you will have hands-on time to develop and ask questions
 1. We have compiled [Processor Guide Part 3](/guides/processor-part-3.html)
 1. We will provide a starter instruction memory with the unit tests and complete program tests.
@@ -78,10 +125,5 @@ For interactive grading you should be able to run the autograder tests and manua
 
 - (30 points) Automated unit tests
 - (50 points) Automated prog tests
-- (10 points) NTLang codegen tests
-- (10 points) Interactive grading
+- (20 points) Interactive grading
 - (0 points) Neatness - Circuit quality
-
-## Extra Credit
-
-TBA
