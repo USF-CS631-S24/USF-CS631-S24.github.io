@@ -13,6 +13,7 @@ published: false
 
 ## There is no interactive grading for lab08
 
+
 ## Overview
 
 For our study of operating system kernel design we will explore and modify the xv6 kernel and user programs from MIT. The xv6 kernel is written mostly in C with some RISC-V Assembly. Because of this, we will be able to understand some of the low-level parts of the kernel. In this lab you will get your local development environment setup to compile, run, and debug xv6. We will be using Qemu to as our RISC-V emulator to run xv6. You main objective is to add a new user program to the xv6 user file system.
