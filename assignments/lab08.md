@@ -252,6 +252,6 @@ pip3 install pexpect
 You will also have to install the autograder requirements. Go to your autograder repo and type:
 
 ```text
-pip3 install -r requirements
+pip3 install -r requirements.txt
 ```
 
