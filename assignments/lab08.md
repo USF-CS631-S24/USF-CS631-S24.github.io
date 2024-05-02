@@ -55,7 +55,7 @@ cd /raid/cs631/$(whoami)
 You may want to create an alias in `~/.bash_aliases` or `~/.bashrc` to easily get to your local directory:
 
 ```text
-alias xv6=`cd /raid/cs631/<username>`
+alias xv6='cd /raid/cs631/<username>'
 ```
 
 ### BeagleV Machines
