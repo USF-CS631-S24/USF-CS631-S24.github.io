@@ -213,7 +213,7 @@ Unary operators:
 
 **Extra Credit Problems**
 
-1. (3 points) Extend NTLang to support variables and statements. Specifically add support for assignment and a print statement. For example consider the following new NTLang programs:
+(1) (3 points) Extend NTLang to support variables and statements. Specifically add support for assignment and a print statement. For example consider the following new NTLang programs:
 
 ```text
 $ cat p1.nt
@@ -250,7 +250,7 @@ With this extension, you need to modify ntlang to accept a pathname as the name 
 $ ntlang p1.nt
 ```
 
-2. (1 point) Extend extra credit item (1) to enter a REPL if no pathname is given:
+(2) (1 point) Extend extra credit item (1) to enter a REPL if no pathname is given:
 
 ```
 $ ntlang
@@ -261,4 +261,4 @@ nt> print(x, 16, 32)
 0x00000007
 ```
 
-3. (3 points) Implement ntlang in either Rust (https://www.rust-lang.org) or Zig (https://ziglang.org). These are modern systems programming languages. You can only get credit for re-implementation in one language.
+(3) (3 points) Implement ntlang in either Rust (https://www.rust-lang.org) or Zig (https://ziglang.org). These are modern systems programming languages. You can only get credit for re-implementation in one language.
