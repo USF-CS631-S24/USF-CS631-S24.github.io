@@ -7,7 +7,7 @@ permalink: /assignments/project07
 published: false
 ---
 
-# Adding strace to xv6
+# xv6 Processes and strace
 
 ## Due in your project07 GitHub repo by Thu May 9th at 11:59pm
 
@@ -15,12 +15,13 @@ published: false
 
 ## Overview
 
+In this project you will get experience using the xv6 systems calls for working with processes in Unix and with making modifcations to the kernel to support a command called `strace`.
+
 The `strace` program is standard on many versions of Unix, including Linux that allows you to see all the system calls that a program invokes during execution. This can be helpful for debugging certain types of problems. It also helps you understand how system calls are used. You can learn more about it here:
 
 [https://opensource.com/article/19/10/strace](https://opensource.com/article/19/10/strace)
 
 We are going to modify xv6 to support a simple version of the `strace` command. You will make modifications to the kernel, add an `strace` system call, and write a new user level program called `strace` that will run a program with tracing on.
-
 
 
 ## Reading
@@ -30,7 +31,11 @@ You should read Chapters 1, 2, and 4 from the xv6 book.
 [https://pdos.csail.mit.edu/6.828/2023/xv6/book-riscv-rev3.pdf](https://pdos.csail.mit.edu/6.828/2023/xv6/book-riscv-rev3.pdf)
 
 
-## Part 1 - Adding the strace() system call
+## xv6 Processes
+
+
+
+## Part 2 - Adding the strace() system call
 
 
 
