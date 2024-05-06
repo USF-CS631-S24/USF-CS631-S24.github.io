@@ -1,15 +1,15 @@
 ---
 layout: default
 title: Project07
-nav_order: 17
+nav_order: 15
 parent: Assignments
 permalink: /assignments/project07
-published: false
+published: true
 ---
 
-# xv6 Processes and strace
+# xv6 strace
 
-## Due in your project07 GitHub repo by Thu May 9th at 11:59pm
+## Due in your project07 GitHub repo by Thu May 16th at 11:59pm
 
 ## There is no interactive grading for project07
 
@@ -23,186 +23,57 @@ The `strace` program is standard on many versions of Unix, including Linux that 
 
 We are going to modify xv6 to support a simple version of the `strace` command. You will make modifications to the kernel, add an `strace` system call, and write a new user level program called `strace` that will run a program with tracing on.
 
-
 ## Reading
 
-You should read Chapters 1, 2, and 4 from the xv6 book.
+You should read Chapters 1, 2, and 4 from the xv6 book:
 
-[https://pdos.csail.mit.edu/6.828/2023/xv6/book-riscv-rev3.pdf](https://pdos.csail.mit.edu/6.828/2023/xv6/book-riscv-rev3.pdf)
+[xv6 book Chapter 3](/files/xv6-book-riscv-rev3.pdf)
 
+## Adding the strace() system call
 
-## xv6 Processes
+To support strace you will need to add a new field to the `struct proc` in `proc.c`. You can call this field `int strace`. A value of 0 means tracing is off and a value of 1 means tracing is on. You will add a system call, `strace(int value)`, that will set the strace field appropriately. Only values of 0 and 1 should be accepted.
 
+## Modifying the system calls
 
-
-## Part 2 - Adding the strace() system call
-
-
-
-Adding a new user program to xv6 involves several steps. Here's a step-by-step guide on how to add a new user program, called hello.c, to xv6:
-
-1. **Create the Program**
-
-   First, you need to create your C program. In this case, we'll create a simple "Hello, World!" program. Save it as `hello.c` in the `xv6-riscv/user` directory.
-
-```c
-#include "kernel/types.h"
-#include "user/user.h"
-
-int main(void) {
-    printf("Hello, World!\n");
-    exit(0);
-}
-```
-
-2. **Update the Makefile**
-
-   Next, you need to add your program to the Makefile so that it gets compiled and linked when you build xv6. Open the `Makefile` in the `xv6-riscv` directory and find the `UPROGS` variable. Add your program to the list:
-
-```makefile
-UPROGS=\
-    _cat\
-    _echo\
-    ...
-    _hello\
-    ...
-```
-
-3. **Build and Test the Program**
-
-   Finally, you can test your program by running xv6 and then running your program. Start xv6:
-
-```bash
-$ make qemu
-```
-
-   Then, in the xv6 shell, run your program:
-
-```bash
-$ hello
-```
-
-   You should see "Hello, World!" printed to the console.
-
-## Adding a new system call to xv6
-
-Adding a new system call to the xv6 kernel involves several steps. Here's how you can add a system call named `kmemfree()` that returns the amount of free kernel memory available.
-
-1. **Define the System Call**
-
-   First, you need to define the system call. Open the `kernel/syscall.h` file and add a new system call number at the end of the list. For example:
-
-```c
-#define SYS_kmemfree 22
-```
-
-2. **Implement the System Call**
-
-   Next, you need to implement the system call. Create a new function in `kernel/sysproc.c`:
+To support `strace` you will need to modify each of the system calls to print the tracing info if the `strace` value for the currently running process is 1. Note that in the kernel, you can get access to the currently running process struct using the `myproc()` function, you can combine this with field access, e.g., `myproc()->strace`. For buffers we will just print `addr` to make the autograder work. In some cases adding the trace printing is easy, in other cases you have to rework the code a bit in order to get access to the arguments before checking for errors, here is an example:
 
 ```c
 uint64
-sys_kmemfree(void)
+sys_close(void)
 {
-  return (uint64) kmemfree();
-}
+  int fd;
+  struct file *f;
+  int rv;
+  rv = argfd(0, &fd, &f);
+  if (myproc()->trace)
+    printf("[%d] sys_close(%d)\n", myproc()->pid, fd);
+  if(rv < 0)
+    return -1;
+  myproc()->ofile[fd] = 0;
+  fileclose(f);
+  return 0;
+} 
 ```
 
-   Here, `kmemfree()` is a function that returns the amount of free kernel memory. You would need to implement this function in `kernel/kalloc.c`:
+Compare this to the original code and notice the added rv variable and order of access, printing, and then error condition checking.
 
-```c
-uint64
-kmemfree(void)
-{
-  struct run *r;
-  uint64 free = 0;
-  for(r = kmem.freelist; r; r=r->next)
-    free += PGSIZE;
-  return free;
-}
-```
-3. **Add Prototype to kernel/defs.h**
+## The strace user program
 
-```c
-// kalloc.c
-void*           kalloc(void);
-void            kfree(void *);
-void            kinit(void);
-uint64          kmemfree(void);
-```
-
-4. **Add the System Call to the System Call Table**
-
-   Then, you need to add the system call to the system call table. Open the `kernel/syscall.c` and add an `extern` for `sys_kmemfree` after the existing extern definitions.
-
-```c
-extern uint64 sys_kmemfree(void);
-```
-   
-    Then add a new entry in the `syscalls[]` array:
-
-```c
-[SYS_kmemfree] sys_kmemfree,
-```
-
-5. **Add kmemfree() to user/usys.pl**
-
-You need to add our new system call to `user/usys.pl` at the end:
-
-```
-entry("kmemfree");
-```
-
-6. **Add kmemfree() to user/user.h**
-
-You need to add the prototype for `kmemfree()` to user/user.h:
-
-```
-int kmemfree(void);
-```
-
-7. **Create a User Program**
-
-    Now, you can create a new user program that calls this system call. Create a new file `user/kmemfree.c`:
-
-```c
-#include "kernel/types.h"
-#include "kernel/stat.h"
-#include "user/user.h"
-
-int
-main(int argc, char *argv[])
-{
-  printf("Free kernel memory: %d\n", kmemfree());
-  exit(0);
-}
-```
-
-8. **Add the User Program to the Makefile**
-
-    Finally, you need to add the user program to the Makefile. Open the `Makefile` and add `freekmem` to the `UPROGS` list:
-
-```makefile
-UPROGS=\
-    _cat\
-    ...
-    _kmemfree\
-    ...
-```
-
-    After these steps, you should be able to compile and run xv6 with the new system call and user program. You can test it by running `kmemfree` in the xv6 shell.
-
-## Running the Autograder tests
-
-Inside the starter xv6 code I've provided a program call runxv6.py. In order for the autograder to run this you will need to install the Python pexpect module:
+The `strace` user program 
 
 ```text
-pip3 install pexpect
+$ strace echo a b c
+[13] sys_write(1, addr, 1)
+a[13] sys_write(1, addr, 1)
+ [13] sys_write(1, addr, 1)
+b[13] sys_write(1, addr, 1)
+ [13] sys_write(1, addr, 1)
+c[13] sys_write(1, addr, 1)
+
+[13] sys_exit(0)
+$
 ```
 
-You will also have to install the autograder requirements. Go to your autograder repo and type:
+## The sctest.c output
 
-```text
-pip3 install -r requirements
-```
-
+Coming soon

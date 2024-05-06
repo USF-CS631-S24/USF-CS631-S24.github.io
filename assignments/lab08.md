@@ -29,7 +29,7 @@ The main xv6 site:
 
 The xv6 book:
 
-[https://pdos.csail.mit.edu/6.828/2023/xv6/book-riscv-rev3.pdf](https://pdos.csail.mit.edu/6.828/2023/xv6/book-riscv-rev3.pdf)
+[xv6 Book](/assignments/xv6-book-riscv-rev3.pdf)
 
 MIT Instructions for installation (see below for other options)
 
@@ -42,7 +42,6 @@ The GitHub repo for the RISC-V version of xv6:
 ## Installation Instructions
 
 To compile and run xv6 you will need to install Qemu, RISC-V build tools, and gdb
-
 ### Using gojira
 
 Your best option for compiling, running and debugging xv6 will be on the CS machine called `gojira`. This machine is quite powerful and has everything you need to do xv6 development. Since it mounts your CS home directory, all of your ssh keys should work just as they do for the BeagleV machines and stargate. However, you will want to clone your repos and do your work on the local disk. Everyone has their own directory in `/raid/cs631`.
