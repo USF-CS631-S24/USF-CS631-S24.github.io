@@ -8,7 +8,7 @@ Tue, May 7
           [iPad Notes](/notes/CS631-01 2024-05-07 xv6 Processes.pdf)
 &nbsp; &nbsp;
 Sec02 - [Recording](https://usfca.zoom.us/rec/share/b6-KsjmuNWTfvSeenj_1PzZelCLWHozNyC2Wp-rHKVydl5By3BbZrcWFq8YrRDOd.b6oRmH7gcdFtqEL7?startTime=1715118663000),
-        [iPad Notes](/notes/CS631-02 2024-05-09 xv6 Processes.pdf)
+        [iPad Notes](/notes/CS631-02 2024-05-07 xv6 Processes.pdf)
 
 Thu, May 9
 : **Lec**{: .label .label-green } xv6 Page Tables
